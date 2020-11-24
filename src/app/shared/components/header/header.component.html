@@ -1,0 +1,16 @@
+<mat-toolbar class="header-toolbar" color="primary">
+  <mat-toolbar-row>
+    <div class="container">
+      <div>
+        <a class="space" (click)="save()" mat-raised-button [matBadge]="total$ | async" matBadgeColor="warn">
+          <mat-icon>add_shopping_cart</mat-icon>
+          Carrito
+        </a>
+        <a class="space" (click)="checkout()" mat-raised-button>
+          <mat-icon>shopping_cart</mat-icon>
+          Checkout
+        </a>
+      </div>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
