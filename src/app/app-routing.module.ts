@@ -10,11 +10,6 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: '/products',
-        pathMatch: 'full',
-      },
-      {
-        path: 'products',
         loadChildren: () => import('./product/product.module').then(m => m.ProductModule)
       },
     ]
