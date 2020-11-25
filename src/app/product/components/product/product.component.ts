@@ -21,6 +21,11 @@ export class ProductComponent implements OnInit {
     private cartService: CartService
   ) {
     this.inputQuantity = new FormControl(null, [Validators.required]);
+    this.cartService.checkoutEvent$.subscribe(res => {
+      if (res) {
+        this.inputQuantity.reset();
+      }
+    });
   }
 
   ngOnInit(): void {
@@ -37,7 +42,11 @@ export class ProductComponent implements OnInit {
   }
 
   removeItem(): void {
-    this.cartService.removeItem(this.getCartProduct());
+    if (this.getIdCart()) {
+      this.cartService.removeItemCart(this.getIdCart(), this.getCartProduct());
+    } else {
+      this.cartService.removeItem(this.getCartProduct());
+    }
   }
 
   getCartProduct(): CartProduct {
@@ -45,5 +54,9 @@ export class ProductComponent implements OnInit {
       productId: this.product.id,
       quantity: this.inputQuantity.value
     };
+  }
+
+  getIdCart(): number {
+    return +localStorage.getItem('idCart');
   }
 }

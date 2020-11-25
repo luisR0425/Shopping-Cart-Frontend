@@ -15,16 +15,15 @@ export class ProductsComponent implements OnInit {
     private productsService: ProductService
   ) { }
 
+  // tslint:disable-next-line:typedef
   ngOnInit() {
-    this.fetchProducts();
+    this.getProducts();
   }
 
-  clickProduct(id: number): any {
-    console.log('product');
-    console.log(id);
+  clickProduct(): any {
   }
 
-  fetchProducts(): any {
+  getProducts(): any {
     this.productsService.getAllProducts()
       .subscribe(products => {
         console.log(products);

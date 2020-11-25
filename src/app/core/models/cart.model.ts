@@ -1,6 +1,6 @@
-import {CartProductModel} from './cart.product.model';
+import {CartProduct} from './cart.product.model';
 
 export interface Cart {
   id?: number;
-  cartProductList?: CartProductModel[];
+  cartProductList?: CartProduct[];
 }
